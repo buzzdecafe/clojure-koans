@@ -3,21 +3,29 @@
 
 (defn is-even? [n]
   (if (= n 0)
-    __
-    (___ (is-even? (dec n)))))
+    true 
+    (not (is-even? (dec n)))))
 
 (defn is-even-bigint? [n]
   (loop [n   n
          acc true]
     (if (= n 0)
-      __
+      acc 
       (recur (dec n) (not acc)))))
 
-(defn recursive-reverse [coll]
-  __)
+(defn recursive-reverse [coll]  
+  (reduce conj () coll))
 
 (defn factorial [n]
-  __)
+  (loop [acc 1 n n]
+    (if (< n 2) acc (recur (* acc n) (dec n)))
+  ))
+; this works for all but the last koan:  
+;  (let [factAcc (fn facc[acc n] 
+;                  (if (< n 2) acc (facc (* acc n) (dec n))))]
+;    (factAcc 1 n)
+;    ))
+; it's very similar to the solution above!
 
 (meditations
   "Recursion ends with a base case"
